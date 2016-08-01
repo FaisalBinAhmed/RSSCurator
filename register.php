@@ -5,6 +5,31 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
+<div class="login" align="right">
+
+<form action="login.php" method="post">
+     <p>Already have an account?</p>
+     <table>
+        <tr>
+            <td>
+                <input class="login-form" type="email" name="loginEmail" placeholder="Registerd Email">
+            </td>
+
+            <td>
+                <input class="login-form" type="password" name="loginPass" placeholder="Password">
+            </td>
+
+            <td>
+                <button class="login-form" type="submit" value="Sign IN"><b>Sign In</b></button>
+            </td>
+
+        </tr>
+     </table>
+     </form>
+</div>
+
+
 <div class="sign-up-form">
             
             <form action="config.php" method="post">
@@ -42,5 +67,7 @@
             </form>
         </div>
 
+        
+
 </body>
-</html>>
+</html>
