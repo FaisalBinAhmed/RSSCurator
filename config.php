@@ -5,7 +5,7 @@
 		{
 			echo "Not connected";
 		}
-		if(!mysqli_select_db($con,'reg'))
+		if(!mysqli_select_db($con,'rsscurator'))
 		{
 			echo "database not selected";
 		}	
@@ -14,16 +14,24 @@
     	$email=$_POST['email'];
     	$pass=$_POST['pass'];
 
-    	$sql= "INSERT into users (Name,email,password) VALUES('$name','$email','$pass')";
+        if(empty($name) || empty($email) || empty($pass))
+        {
+            Echo("Field must not be empty");
+        }
+        else
+        {
+            $sql= "INSERT into users (name,email,password) VALUES('$name','$email','$pass')";
 
-    	if(!mysqli_query($con, $sql))
-    	{
-    		echo "Not Inserted";
-    	}
-    	else
-    	{
-    		echo "Inserted";
-    	}
+        if(!mysqli_query($con, $sql))
+        {
+            echo "Not Inserted";
+        }
+        else
+        {
+            echo "Inserted";
+        }
+        }
+        
 
 
 ?>
