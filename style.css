@@ -76,6 +76,14 @@ body{
      margin-left: 12px;
      position: relative;
  }
+ [class*='col-']:hover {
+
+     /*-- our gutter -- */
+
+     background-color: #e0e0e0;
+
+ }
+
 /*
  .col-1{
 
@@ -156,9 +164,17 @@ body{
   float:right;
 
 }
+.article {
+  
+    line-height:1.5;
+
+
+
+}
 
 .article p{
     margin: 0;
+
 
 }
 .article p:first-child::first-letter {

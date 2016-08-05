@@ -8,6 +8,7 @@ $js = "";
 echo "<div class=\"grid-container outline\">";
 $links = array();
 $js .= "<script type=\"text/javascript\"> var A=[];";
+//$js .= " var B=[];";
 $j=0;
 foreach ($feeds as $url) {
   # code...
@@ -23,6 +24,7 @@ for($i = 0; $i < 3; $i++){
 	$title = $xml->channel->item[$i]->title;
 	$links[$j] = $xml->channel->item[$i]->link;
 	$js .= " A[$j] = ' $links[$j]';";
+	//$js .= " B[$j] = ' $title ';";
 //	$js .= "window.alert(A[$j]);";
 	$description = $xml->channel->item[$i]->description;
 	$des = substr($description, 0, 80)."...";
@@ -47,12 +49,7 @@ $html .= "</div>";
 
 $html .= "</div>";
 $js .= "</script>";
-/*
-$ht = file_get_html($links[2]);
-foreach ($ht->find('img') as $e) {
-	$html .= "<img src=\"$e->src\" ><br>";
-	# code...
-}*/
+
 
 echo $html;
 echo $js;
