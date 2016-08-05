@@ -12,11 +12,12 @@ $j=0;
 foreach ($feeds as $url) {
   # code...
 $j=$j+1;
+$html .= "<div class=\"cathead\"> <p>Technologies</p> </div>";
 $html .= "<div class=\"row\">";
 
 
 $xml = simplexml_load_file($url);
-for($i = 0; $i < 2; $i++){
+for($i = 0; $i < 3; $i++){
 	$j=$j+$i;
 
 	$title = $xml->channel->item[$i]->title;
@@ -33,14 +34,17 @@ for($i = 0; $i < 2; $i++){
         $html .= "<div class=\"headline\">$title</div>";
 
       	$html .= "<div class=\"excerpt\">$des</div>";
+				$html .="<div class=\"gridbottom\">";
       	$html .= "<div class=\"timestamp\">$pubDate</div>";
-				$html .= "<button id=\"rm-$j\" class=\"readmore\" onclick=\"readfunc($j)\" > Read more.. </button>";
+				$html .= "<div class=\"rmbtn\"><button id=\"rm-$j\" class=\"readmore\" onclick=\"readfunc($j)\" > Read more.. </button></div>";
+				$html .= "</div>";
 				$html .= "</div>";
 }
 
 $html .= "</div>";
 
 }
+
 $html .= "</div>";
 $js .= "</script>";
 /*
