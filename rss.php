@@ -1,17 +1,9 @@
 <?php
 
-
-   session_start();
-   $_SESSION['weblink'] = "";
-
-
-
-
-include('simple_html_dom.php');
 echo "<link rel='stylesheet' type='text/css' href='style.css' /><script type=\"text/javascript\" src=\"script.js\"></script><script src=\"jquery-3.1.0.min.js\"></script>";
 
 $html = "";
-$feeds = array("http://feeds.reuters.com/reuters/topNews", "http://arstechnica.com/feed");
+$feeds = array("http://feeds.reuters.com/reuters/topNews" ,"http://arstechnica.com/feed");
 $js = "";
 echo "<div class=\"grid-container outline\">";
 $links = array();

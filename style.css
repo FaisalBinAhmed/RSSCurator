@@ -121,3 +121,33 @@ body{
   position: absolute;
   bottom: 50;
 }
+.article{
+  display: block;
+
+
+
+
+}
+
+.article p{
+    margin: 0;
+
+}
+.article p:first-child::first-letter {
+    font-size: 200%;
+    color: #8A2BE2;
+}
+
+.articleimages{
+
+align-items: center;
+
+}
+.articleimages img {
+  width: 25%;
+  height: auto;
+  float: left;
+
+  margin: 10px;
+
+}

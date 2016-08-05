@@ -11,3 +11,9 @@ tab.focus();
 
 
 }
+
+function fontsize(){
+
+
+
+}
