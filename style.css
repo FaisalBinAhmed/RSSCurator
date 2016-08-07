@@ -58,19 +58,18 @@ body{
 
 
 }
- -- our cleafix hack --
+/*
  .row:before,
  .row:after {
      content:"";
        display: table ;
      clear:both;
- }
+ }*/
 
  [class*='col-'] {
      float: left;
      min-height: 250px;
      width: 32.5%;
-     /*-- our gutter -- */
      padding: 20px;
      background-color: white;
      margin-left: 12px;
@@ -78,7 +77,6 @@ body{
  }
  [class*='col-']:hover {
 
-     /*-- our gutter -- */
 
      background-color: #e0e0e0;
 
@@ -100,7 +98,7 @@ body{
   /*   outline: 1px solid #F6A1A1;*/
  }
 
- /*-- some extra column content styling --*/
+
  [class*='col-'] > p {
   background-color: white;
   padding: 10px;

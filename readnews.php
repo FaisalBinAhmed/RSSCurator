@@ -1,5 +1,5 @@
 <?php
-
+include('navigation.php');
 //connection
 /*
 $con=mysqli_connect('localhost','root','');
