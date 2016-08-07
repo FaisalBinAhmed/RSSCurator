@@ -48,11 +48,7 @@ $link =  $_GET["url"];
 $string = str_replace(' ', '', $link);
 
 $fs = "18px";
-<<<<<<< HEAD
 $ff = "Segoe UI";
-=======
-$ff = "'Merriweather', Georgia, 'Times New Roman', Times, serif";
->>>>>>> origin/master
 
 $html = "";
 // $html .= "<button onclick= \"fontsize()\">Set</button>";
