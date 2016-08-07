@@ -13,8 +13,13 @@
     box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 .signUP{
    margin-top: 150px;
+=======
+.sign-up-form table{
+    margin-top: 150px;
+>>>>>>> origin/master
 }
 .submit {
     margin-top: 30px;
@@ -23,9 +28,14 @@
     border: #0099CC;
 }
 body{
+<<<<<<< HEAD
   text-align: center;
     /*background-color: #E7E7E7;
     background-image: url("images/pencils-762555_1920.jpg");
+=======
+    background-color: #E7E7E7;
+  /*  background-image: url("images/pencils-762555_1920.jpg");
+>>>>>>> origin/master
     background-size:     cover;
     background-repeat:   no-repeat;
     background-position: center center; */
@@ -55,7 +65,11 @@ body{
      box-sizing: border-box;
  }
 .row{
+<<<<<<< HEAD
   padding: 15px 15px 15px 15px;
+=======
+/*  padding: 15px 15px 15px 15px;*/
+>>>>>>> origin/master
 
 
 }
@@ -70,6 +84,7 @@ body{
  [class*='col-'] {
      float: left;
      min-height: 250px;
+<<<<<<< HEAD
      width: 49%;
      /*-- our gutter -- */
      padding: 20px;
@@ -77,6 +92,23 @@ body{
      margin-left: 15px;
      position: relative;
  }
+=======
+     width: 32.5%;
+     /*-- our gutter -- */
+     padding: 20px;
+     background-color: white;
+     margin-left: 12px;
+     position: relative;
+ }
+ [class*='col-']:hover {
+
+     /*-- our gutter -- */
+
+     background-color: #e0e0e0;
+
+ }
+
+>>>>>>> origin/master
 /*
  .col-1{
 
@@ -105,6 +137,18 @@ body{
   text-align: center;
   color: black;
  }
+<<<<<<< HEAD
+=======
+.cathead p {
+ margin-left: 15px;
+ font-family: Open Sans , sans-serif;
+ font-size: 40px;
+
+
+
+}
+
+>>>>>>> origin/master
 .headline{
   font-family: Segoe UI;
   font-size: 1.8rem;
@@ -113,6 +157,7 @@ body{
 }
 .timestamp{
 
+<<<<<<< HEAD
     position: absolute;
     bottom: 10;
 }
@@ -121,10 +166,49 @@ body{
   font-size: 1.4rem;
   position: absolute;
   bottom: 50;
+=======
+    float: left;
+}
+.excerpt{
+  font-family: sans serif;
+  font-size: 1rem;
+  margin-top: 25px;
+>>>>>>> origin/master
 }
 .article{
   display: block;
 
+<<<<<<< HEAD
+=======
+}
+
+.readmore {
+  background-color: white;
+    border: none;
+    color: black;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+
+}
+
+.gridbottom{
+  margin-top: 25px;
+
+}
+.rmbtn{
+  float:right;
+
+}
+.article {
+  
+    line-height:1.5;
+>>>>>>> origin/master
 
 
 
@@ -133,6 +217,10 @@ body{
 .article p{
     margin: 0;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 }
 .article p:first-child::first-letter {
     font-size: 200%;
