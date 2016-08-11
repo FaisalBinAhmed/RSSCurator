@@ -101,6 +101,26 @@ for($i = 0; $i < 3; $i++){
 }
 $html .= "</div>";
 }
+$html .= "
+<div id=\"myModal\" class=\"modal\">
+
+  <!-- Modal content -->
+  <div class=\"modal-content\">
+    <div class=\"modal-header\">
+
+      <h2>Modal Header</h2>
+			<button type=\"button\" class=\"close\" onclick=\"closearticle()\" >X</button>
+    </div>
+    <div class=\"modal-body\">
+      <p id = \"articlewords\">Loading article...</p>
+
+    </div>
+
+  </div>
+
+</div>
+
+";
 
 $html .= "</div>";
 $js .= "</script>";
