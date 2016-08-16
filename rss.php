@@ -14,7 +14,8 @@ if(!mysqli_select_db($con,'rsscurator'))
 
 session_start();
 
-
+$fs=$_SESSION["fontsize"]."px";
+$fonty =$_SESSION["font"];
 
 //query
 
@@ -29,40 +30,40 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 		$index++;
 }
 
-/*
-$q = " SELECT catID FROM usercats WHERE UID =".$_SESSION["UID"]."";
-$result=mysqli_query($con,$q) or die( mysqli_error($con) );
-
-$rows = array();
-$index = 0;
+$q2 = "SELECT catname FROM categories WHERE catID IN ( SELECT catID from usercats WHERE uid =".$_SESSION["UID"]." )";
+$result2 = mysqli_query($con,$q2) or die( mysqli_error($con) );
 $rows2 = array();
 $index2 = 0;
-
-while($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+while($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC))
 {
-    $rows[$index] = $row["catID"];
-		$index++;}
+    $rows2[$index2] = $row2["catname"];
+		$index2++;
+}
 
+/*
+$q3 = "SELECT fontsize FROM users where uid=".$_SESSION["UID"]."";
+$result3 = mysqli_query($con,$q3) or die( mysqli_error($con) );
+$rows3 = array();
 
-		for ($i=0; $i<$index; $i++) {
+while($row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC))
+{
+  $fs = $row3["fontsize"]."px";
 
-			$q2 = " SELECT siteurl FROM sites WHERE catid = ".$rows[$i]."";
-			$result2=mysqli_query($con,$q2) or die( mysqli_error($con) );
+}
+$q4 = "SELECT font FROM users where uid=".$_SESSION["UID"]."";
+$result4 = mysqli_query($con,$q4) or die( mysqli_error($con) );
+$rows4 = array();
 
+while($row4 = mysqli_fetch_array($result4, MYSQLI_ASSOC))
+{
+	$fonty .= $rows4["font"];
 
-			while($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC))
-			{
-			    $rows2[$index] = $row2["siteurl"];
-					$index2++;}
-
-
-
-			# code...
-	//}
-	for($i=0; $i<$index2; $i++){
-echo $rows2[$i];}
+}
 */
-//includes
+
+
+$index3 = 0;
+
 echo "<link rel='stylesheet' type='text/css' href='style.css' /><script type=\"text/javascript\" src=\"script.js\"></script><script src=\"jquery-3.1.0.min.js\"></script>";
 
 //grid
@@ -77,7 +78,8 @@ $j=0;
 foreach ($rows as $url) {
   # code...
 $j=$j+1;
-$html .= "<div class=\"cathead\"> <p>Category Name</p> </div>";
+$html .= "<div class=\"cathead\"> <p> $rows2[$index3] </p> </div>";
+$index3++;
 $html .= "<div class=\"row\">";
 $xml = simplexml_load_file($url);
 for($i = 0; $i < 3; $i++){
@@ -104,15 +106,15 @@ $html .= "</div>";
 $html .= "
 <div id=\"myModal\" class=\"modal\">
 
-  <!-- Modal content -->
+
   <div class=\"modal-content\">
     <div class=\"modal-header\">
 
-      <h2>Modal Header</h2>
+      <h2>Header</h2>
 			<button type=\"button\" class=\"close\" onclick=\"closearticle()\" >X</button>
     </div>
     <div class=\"modal-body\">
-      <p id = \"articlewords\">Loading article...</p>
+      <p style=\"font-size: $fs; font-family: $fonty; \" id = \"articlewords\">Loading article...</p>
 
     </div>
 
