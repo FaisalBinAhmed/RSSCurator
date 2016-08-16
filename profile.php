@@ -4,19 +4,42 @@
 <head>
 	<title>Profile</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+	input[type=text], input[type=date], input[type=password], input[type=submit], button[type=button] {
+	    width: 300px;
+		font-family: Segoe UI;
+		font-size: 18px;
+	    padding: 12px 20px;
+	    margin: 8px 0;
+	    box-sizing: border-box;
+	}
+	input[type=radio]{
+
+		font-family: Segoe UI;
+		font-size: 18px;
+	}
+	body{font-size: 22px;}
+select {width: 300px;
+font-family: Segoe UI;
+font-size: 18px;
+padding: 12px 20px;
+margin: 8px 0;
+box-sizing: border-box;}
+	</style>
+
+
+
 </head>
 <body>
 
-<a href="setting.php"><input class="submit text-input" type="button" name="home" value="Home" ></a>
-<a href="profile.php"><input class="submit text-input" type="button" name="profile" value="profile"></a>
-<a href="logout.php"><input class="submit text-input" type="button" name="logout" value="Sign Out" ></a><br>
+<?php	include('navigation.php'); ?>
 
 
 <?php
 session_start();
 
 //echo "Hello";
-echo "User ID: ".$_SESSION["UID"]."<br>" ;
+echo "Profile Info: <br>" ;
 echo "Name: ".$_SESSION["name"]."<br>" ;
 echo "Email: ".$_SESSION["email"]."<br>" ;
 echo "Password: ".$_SESSION["password"]."<br>" ;
@@ -30,40 +53,38 @@ echo "Font: ".$_SESSION["font"]."<br>" ;
 <form action = "<?php $_PHP_SELF ?>" method = "POST">
 <hr>
 <br>
-	Old password:
-	<input type="text" name="oldpass"/><br><br>
+	Old password:<br>
+	<input type="text" name="oldpass"/><br>
 
-	New password:
-	<input type="text" name="newpass"/><br><br>
+	New password:<br>
+	<input type="text" name="newpass"/><br>
 
-	<input type="submit" name="updatePass" value="update Password"/><br><br>
+	<input type="submit" name="updatePass" value="update Password"/><br>
 
-	Name:
-	<input type="text" name="newName"/>
+	Name:<br>
+	<input type="text" name="newName"/><br>
 	<input type="submit" name="updateName" value="update Name"/><br>
 
-	Email:
-	<input type="text" name="newEmail"/>
+	Email:<br>
+	<input type="text" name="newEmail"/><br>
 	<input type="submit" name="updateEmail" value="update Email"/><br>
 
-	 <select name="font">
+	<select name="font"><br>
   <option value="Segoe UI">Segoe UI</option>
-<<<<<<< HEAD
-  <option value="Times New Roman">Times New Roman</option>
-  <option value="verdana">Verdana</option>
-=======
-  <option value="Times Roman">Times Roman</option>
-  <option value="Verdana">Verdana</option>
->>>>>>> origin/master
-  <input type="submit" name="updateFont" value="update Font"/><br>
-</select>
 
-Font Size:
-	<input type="text" name="newFS"/>
+  <option value="Times New Roman">Times New Roman</option>
+  <option value="Verdana">Verdana</option>
+
+  <option value="Trebuchet MS">Trebuchet</option>
+  <option value="Sans-Serif">sans-serif</option></select><br>
+  <input type="submit" name="updateFont" value="update Font"/><br>
+<br>
+
+Font Size:<br>
+	<input type="text" name="newFS"/><br>
 	<input type="submit" name="updateFS" value="update Font Size"/><br>
 <hr>
-
-<<<<<<< HEAD
+<!--
  		<input type="checkbox" name="check_list[]" value="1">Entertainment<br>
   	<input type="checkbox" name="check_list[]" value="2">Sports<br>
   	<input type="checkbox" name="check_list[]" value="3">Technology<br>
@@ -72,8 +93,9 @@ Font Size:
   	<input type="checkbox" name="check_list[]" value="6">Local<br>
   	<input type="checkbox" name="check_list[]" value="7">Science<br>
   	<input type="checkbox" name="check_list[]" value="8">Top<br>
-  	<input type="submit" value="Submit" name="catSel">
-=======
+  	<input type="submit" value="Submit" name="catSel"><br> -->
+
+		<h2>Add categories</h2><br>
     <?php
 
     $con=mysqli_connect('localhost','root','');
@@ -99,14 +121,14 @@ while($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC))
     $rows2[$index2] = $row2["catname"];
         $index2++;
 }
-        
+
 
         echo "<select name='categories'>";
         if (!in_array("Entertainment", $rows2))
         {
              echo "<option value='1'>Entertainment</option>" ;
         }
-        
+
         if (!in_array("Sports", $rows2))
         {
             echo "<option value='2'>Sports</option>";
@@ -135,12 +157,12 @@ while($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC))
         {
             echo "<option value='8'>Top</option>";
         }
-     
+				echo "</select><br>";
         echo "<input type='submit' value='Submit' name='catSel'>"; echo "<br>";
-      
-        echo "</select>";
-    ?>
 
+
+    ?>
+<h2>Remove categories</h2><br>
 <select name="categoriesDel">
   <option value="1">Entertainment</option>
   <option value="2">Sports</option>
@@ -149,12 +171,12 @@ while($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC))
   <option value="5">World</option>
   <option value="6">Local</option>
   <option value="7">Science</option>
-  <option value="8">Top</option>
-  <input type="submit" value="Delete" name="catDel"><br>
-</select>
+  <option value="8">Top</option></select><br>
+  <input type="submit" value="Delete" name="catDel">
+<br>
 
->>>>>>> origin/master
 </form>
+<h2>Your categories</h2>
 </body>
 </html>
 
@@ -162,45 +184,46 @@ while($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC))
 
 
 
-   
 
 
-	
+
+
 
 if(!empty($rows2[0]))
 {
-    echo $rows2[0]."\n";
-    
+    echo $rows2[0]."\n<br>";
+
 }
 if(!empty($rows2[1]))
 {
-    echo $rows2[1]."\n";
+    echo $rows2[1]."\n<br>";
 }
 if(!empty($rows2[2]))
 {
-    echo $rows2[2]."\n";
+    echo $rows2[2]."\n<br>";
 }
 if(!empty($rows2[3]))
 {
-    echo $rows2[3]."\n";
+    echo $rows2[3]."\n<br>";
 }
 if(!empty($rows2[4]))
 {
-    echo $rows2[4]."\n";
+    echo $rows2[4]."\n<br>";
 }
 if(!empty($rows2[5]))
 {
-    echo $rows2[5]."\n";
+    echo $rows2[5]."\n<br>";
 }
 if(!empty($rows2[6]))
 {
-    echo $rows2[6]."\n";
+    echo $rows2[6]."\n<br>";
 }
 if(!empty($rows2[7]))
 {
-    echo $rows2[7]."\n";
+    echo $rows2[7]."\n<br>";
 }
 
+echo "<br><br>";
 
 
 	 if (isset($_POST['updateName']))
@@ -314,5 +337,5 @@ if(!empty($rows2[7]))
             echo "Updated";
         }
 	}
-    
+
  ?>

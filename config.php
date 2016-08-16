@@ -8,7 +8,7 @@
 		if(!mysqli_select_db($con,'rsscurator'))
 		{
 			echo "database not selected";
-		}	
+		}
 
     	$name=$_POST['name'];
     	$email=$_POST['email'];
@@ -29,11 +29,10 @@
         else
         {
             echo "Inserted";
+						header('Location: profile.php');
         }
         }
-        
+
 
 
 ?>
-
-
