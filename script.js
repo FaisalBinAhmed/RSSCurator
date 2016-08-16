@@ -27,9 +27,6 @@ var xmlhttp = new XMLHttpRequest();
 
 }
 
-function fontsize(){
-
-}
 
 function closearticle(){
 

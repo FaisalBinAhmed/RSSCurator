@@ -12,7 +12,7 @@
 * {
     box-sizing: border-box;
 }
-
+.signUP{text-align: center;}
 .sign-up-form table{
     margin-top: 150px;
 }
@@ -106,14 +106,16 @@ body{
   text-align: center;
   color: black;
  }
-.cathead p {
+.cathead p{
  margin-left: 15px;
+ padding-top: 5px;
  font-family: Open Sans , sans-serif;
  font-size: 40px;
 
 
-
 }
+
+i{font-style:normal;}
 
 .headline{
   font-family: Segoe UI;
@@ -250,4 +252,9 @@ align-items: center;
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
+}
+.navigationMenu{
+  text-align: center;
+
+
 }

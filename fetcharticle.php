@@ -13,7 +13,7 @@ $html .= "<div class=\"article\">";
 
 $ht = file_get_html($string);
 
-$html .= "<div class=\"articletext\" style =\"font-size:$fs; font-family: $ff; \" >";
+$html .= "<div class=\"articletext\" >";
 foreach ($ht->find('p') as $e) {
 
 	if(strlen($e)>60){
