@@ -49,8 +49,8 @@ echo "Font: ".$_SESSION["font"]."<br>" ;
 	<input type="submit" name="updateEmail" value="update Email"/><br>
 
 	 <select name="font">
-  <option value="segoe">Segoe UI</option>
-  <option value="times">Times Roman</option>
+  <option value="Segoe UI">Segoe UI</option>
+  <option value="Times New Roman">Times New Roman</option>
   <option value="verdana">Verdana</option>
   <input type="submit" name="updateFont" value="update Font"/><br>
 </select>
@@ -60,7 +60,7 @@ Font Size:
 	<input type="submit" name="updateFS" value="update Font Size"/><br>
 <hr>
 
- 	<input type="checkbox" name="check_list[]" value="1">Entertainment<br>
+ 		<input type="checkbox" name="check_list[]" value="1">Entertainment<br>
   	<input type="checkbox" name="check_list[]" value="2">Sports<br>
   	<input type="checkbox" name="check_list[]" value="3">Technology<br>
   	<input type="checkbox" name="check_list[]" value="4">Politics<br>

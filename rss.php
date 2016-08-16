@@ -40,43 +40,21 @@ while($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC))
 		$index2++;
 }
 
-/*
-$q3 = "SELECT fontsize FROM users where uid=".$_SESSION["UID"]."";
-$result3 = mysqli_query($con,$q3) or die( mysqli_error($con) );
-$rows3 = array();
-
-while($row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC))
-{
-  $fs = $row3["fontsize"]."px";
-
-}
-$q4 = "SELECT font FROM users where uid=".$_SESSION["UID"]."";
-$result4 = mysqli_query($con,$q4) or die( mysqli_error($con) );
-$rows4 = array();
-
-while($row4 = mysqli_fetch_array($result4, MYSQLI_ASSOC))
-{
-	$fonty .= $rows4["font"];
-
-}
-*/
-
-
 $index3 = 0;
 
 echo "<link rel='stylesheet' type='text/css' href='style.css' /><script type=\"text/javascript\" src=\"script.js\"></script><script src=\"jquery-3.1.0.min.js\"></script>";
 
 //grid
 $html = "";
-//$feeds = array("http://feeds.reuters.com/reuters/topNews" ,"http://arstechnica.com/feed");
 $js = "";
 echo "<div class=\"grid-container outline\">";
 $links = array();
-$js .= "<script type=\"text/javascript\"> var A=[];";
+$js .= "<script type=\"text/javascript\"> var A=[]; var B=[];";
 //$js .= " var B=[];";
 $j=0;
 foreach ($rows as $url) {
   # code...
+	$html .= "<div class=\"rowcontainer\">";
 $j=$j+1;
 $html .= "<div class=\"cathead\"> <p> $rows2[$index3] </p> </div>";
 $index3++;
@@ -87,7 +65,7 @@ for($i = 0; $i < 3; $i++){
 	$title = $xml->channel->item[$i]->title;
 	$links[$j] = $xml->channel->item[$i]->link;
 	$js .= " A[$j] = ' $links[$j]';";
-	//$js .= " B[$j] = ' $title ';";
+	$js .= " B[$j] = ' $title';";
 //	$js .= "window.alert(A[$j]);";
 	$description = $xml->channel->item[$i]->description;
 	$des = substr($description, 0, 80)."...";
@@ -101,19 +79,22 @@ for($i = 0; $i < 3; $i++){
 				$html .= "</div>";
 				$html .= "</div>";
 }
-$html .= "</div>";
+$html .= "</div></div>";
 }
 $html .= "
 <div id=\"myModal\" class=\"modal\">
 
 
-  <div class=\"modal-content\">
+  <div id=\"modaly\" class=\"modal-content\">
     <div class=\"modal-header\">
 
-      <h2>Header</h2>
-			<button type=\"button\" class=\"close\" onclick=\"closearticle()\" >X</button>
+		<button type=\"button\" class=\"close\" onclick=\"closearticle()\" >Close</button>
+		<button type=\"button\" class=\"close\" onclick=\"sharearticle()\" >Share</button>
+		<button type=\"button\" class=\"close\" onclick=\"switcharticle()\" >Switch theme</button>
+
     </div>
     <div class=\"modal-body\">
+			<p id=\"articlehead\"> Loading headline...</p>
       <p style=\"font-size: $fs; font-family: $fonty; \" id = \"articlewords\">Loading article...</p>
 
     </div>
