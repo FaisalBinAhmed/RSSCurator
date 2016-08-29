@@ -8,16 +8,71 @@
   padding: 10px;
   width: 400px;
 }
+
+.cat-title{
+  font-family: "Fakt","AvenirNext-Medium","Segoe UI",sans-serif;
+  font-size: 22px;
+  height: 50px;
+  margin: -2px;
+  padding: 10px;
+  color: White;
+}
+
+.myfont{
+  width: 300px;
+font-family: Segoe UI;
+font-size: 18px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+
+}
+
+.cats{
+  text-align: center;
+  display:block;
+color: White;
+}
+.acc{
+  text-align: center;
+  width: 40rem;
+  margin: 0 auto;
+}
+.mycat{
+  font-family: "Fakt","AvenirNext-Medium","Segoe UI";
+  font-size: 22px;
+  height: 50px;
+  margin: -2px;
+  padding: 10px;
+  color: black;
+  padding-top: 500px;
+  text-align:center;
+  color: #03997e;
+}
+.nav-bar{
+ // border: 1px solid #e6e6e6;
+  border-radius: 0;
+  font-family: "Fakt","AvenirNext-Medium","Segoe UI",sans-serif;
+  font-size: 14px;
+  height: 50px;
+  margin: -4px;
+  padding: 10px;
+  width: 25%;
+  font-weight: bold;
+}
+
 .content{
   margin-top: 200px;
 }
 
 .sidebar{
   color: white;
-  background-color: #0099CC;
+  background-color: #03997e;
   width:330px;
   height:300px;
-  //border:1px solid #0099CC;
+  //border:1px solid #03997e;
   font-size: 16px;
 
 }
@@ -26,8 +81,8 @@
    width: 100%;
 }
 .feature {
-  background-color: #0099cc;
-  border: 1px solid #0099cc;
+  background-color: #03997e;
+  border: 1px solid #03997e;
   color: white;
   font-size: 16px;
   height: 242px;
@@ -35,8 +90,8 @@
   width: 330px;
 }
 .about {
-  background-color: #0099cc;
-  border: 1px solid #0099cc;
+  background-color: #03997e;
+  border: 1px solid #03997e;
   color: white;
   font-size: 16px;
   height: 235px;
@@ -75,16 +130,16 @@
 }
 .bigsidebar{
    color: white;
-  background-color: #0099CC;
+  background-color: #03997e;
   width:330px;
   height:600px;
-  border:1px solid #0099CC;
+  border:1px solid #03997e;
 }
 
 * {
     box-sizing: border-box;
 }
-.signUP{text-align: center;}
+.signUP{text-align: center; margin-top: 10rem;}
 .sign-up-form table{
     margin-top: 150px;
 }
@@ -93,12 +148,12 @@
 }
 .submit {
     margin-top: 30px;
-    background-color:#0099CC;
+    background-color:#03997e;
     color: white;
-    border: #0099CC;
+    border: #03997e;
 }
 body{
-    background-color: #E7E7E7;
+    background-color: #27292f;
   /*  background-image: url("images/pencils-762555_1920.jpg");
     background-size:     cover;
     background-repeat:   no-repeat;
@@ -107,7 +162,7 @@ body{
 .login p{
   font-family: "Fakt","AvenirNext-Medium","Segoe UI",sans-serif;
   font-size: 14px;
-  color: #0099CC;
+  color: #03997e;
 }
 .login-form {
   border: 1px solid #e6e6e6;
@@ -118,11 +173,12 @@ body{
   margin: -2px;
   padding: 10px;
   width: 190px;
+
 }
 .login-submit{
-  background-color: #0099CC;
+  background-color: #03997e;
   color: white;
-  border: 1px solid #0099CC;
+  border: 1px solid #03997e;
   border-radius: 0;
   font-family: "Fakt","AvenirNext-Medium","Segoe UI",sans-serif;
   font-size: 12px;
@@ -158,16 +214,17 @@ body{
      min-height: 250px;
     width: 32.5%;
      padding: 20px;
-     background-color: white;
+     background-color: Black;
      margin-left: 12px;
      position: relative;
      min-width: 27em;
      margin-top: 15px;
+     color: White;
  }
  [class*='col-']:hover {
 
 
-     background-color: #e0e0e0;
+     background-color: #03997e;
 
  }
 
@@ -200,7 +257,7 @@ body{
  padding-top: 5px;
  font-family: Open Sans , sans-serif;
  font-size: 40px;
-
+ color: White;
 
 }
 
@@ -213,28 +270,30 @@ i{font-style:normal;}
 
 }
 .timestamp{
-
+    font-family: sans-serif;
     float: left;
 }
 .excerpt{
-  font-family: sans serif;
+  font-family: Open Sans;
   font-size: 1rem;
   margin-top: 25px;
+  margin-bottom: 25px;
+  color: beige;
 }
 .article{
   display: block;
 
 }
-
+hr{color: #27292f;}
 .readmore {
-  background-color: white;
+  background-color: Black;
     border: none;
-    color: black;
+    color: #03997e;
 
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 20px;
     margin: 4px 2px;
     cursor: pointer;
 
@@ -242,7 +301,7 @@ i{font-style:normal;}
 }
 
 .gridbottom{
-  margin-top: 25px;
+  margin-top: 15px;
 
 }
 .rmbtn{
@@ -330,15 +389,15 @@ align-items: center;
 
     font-size: 28px;
     font-weight: bold;*/
-
+font-family: arial;
     float: right;
     display: inline-block;
     margin: 0 10px 0 0;
   padding: 5px;
   font-size: 20px;
-  border: 2px solid grey;
-background-color: grey;
-color: white;
+  border: none;
+
+color: red;
 }
 
 .close:hover,
@@ -366,6 +425,28 @@ padding: 1em;
 }
 .navigationMenu{
   text-align: center;
-
+cursor: pointer;
 
 }
+.logo{
+	color: White;
+	font-size: 8rem;
+	font-family: Trebuchet MS;
+	width: auto;
+}
+#fb{
+  width: 50px;
+  height: 50px;
+background-color: transparent;
+}
+#tw{
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+}
+#cross{
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+}
+#themes{margin-top: 10px;}

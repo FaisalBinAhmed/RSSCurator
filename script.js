@@ -1,16 +1,9 @@
 //our first javascript code
-var x = document.createElement("IFRAME");
-var out = '';
-x.setAttribute("width", "1280px");
-
 var arturl;
 var span;
 var modal;
 
 function readfunc(a){
-/*
-var tab = window.open("readnews.php?url="+A[a], 'RSS Curator');
-tab.focus();*/
 arturl=A[a];
 span = document.getElementsByClassName("close")[0];
 modal = document.getElementById('myModal');
@@ -44,21 +37,44 @@ window.open ("https://www.facebook.com/sharer/sharer.php?u="+arturl,
 
 }
 
+function sharearticletw(){
+
+window.open ("http://twitter.com/share?url="+arturl,
+"Share","menubar=1,resizable=1,width=350,height=250");
+
+}
+
+
 function switcharticle(){
   var modaly = document.getElementById('modaly');
- var texty = document.getElementById('articlewords');
- var heady = document.getElementById("articlehead");
- if(texty.style.backgroundColor == 'black'){
+  var texty = document.getElementById('articlewords');
+  var heady = document.getElementById("articlehead");
+  var x = document.getElementById("themes").value;
+ //var option = theme.options[theme.selectedIndex].value;
+
+ if(x=="white"){
    texty.style.backgroundColor='White';
    texty.style.color='Black';
    heady.style.color='Black';
    modaly.style.backgroundColor='White';
 }
-else{
+else if(x=="night"){
 texty.style.backgroundColor='Black';
 texty.style.color='White';
 heady.style.color='White';
 modaly.style.backgroundColor='Black';
+}
+else if(x=="sepia"){
+texty.style.backgroundColor='#f5f5dc';
+texty.style.color='Black';
+heady.style.color='Black';
+modaly.style.backgroundColor='#f5f5dc';
+}
+else{
+texty.style.backgroundColor='#191970';
+texty.style.color='White';
+heady.style.color='White';
+modaly.style.backgroundColor='#191970';
 }
 
 

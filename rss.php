@@ -1,6 +1,8 @@
 <?php
 //menu
+//error_reporting(0);
 include('navigation.php');
+echo "<link rel='stylesheet' type='text/css' href='style.css' /><script type=\"text/javascript\" src=\"script.js\"></script>";
 //db connection
 $con=mysqli_connect('localhost','root','');
 if(!$con)
@@ -16,7 +18,7 @@ session_start();
 
 $fs=$_SESSION["fontsize"]."px";
 $fonty =$_SESSION["font"];
-
+$zero = 0;
 //query
 
 $q = " SELECT siteurl FROM sites WHERE catid IN (SELECT catID FROM usercats WHERE UID =".$_SESSION["UID"]." )";
@@ -30,49 +32,44 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 		$index++;
 }
 
-$q2 = "SELECT catname FROM categories WHERE catID IN ( SELECT catID from usercats WHERE uid =".$_SESSION["UID"]." )";
-$result2 = mysqli_query($con,$q2) or die( mysqli_error($con) );
-$rows2 = array();
-$index2 = 0;
-while($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC))
-{
-    $rows2[$index2] = $row2["catname"];
-		$index2++;
-}
-
-$index3 = 0;
-
-echo "<link rel='stylesheet' type='text/css' href='style.css' /><script type=\"text/javascript\" src=\"script.js\"></script><script src=\"jquery-3.1.0.min.js\"></script>";
-
 //grid
 $html = "";
 $js = "";
 echo "<div class=\"grid-container outline\">";
 $links = array();
-$js .= "<script type=\"text/javascript\"> var A=[]; var B=[];";
-//$js .= " var B=[];";
+$js .= "<script type=\"text/javascript\">";
+$js .=  "var A = [];";
+$js .=  "var B = [];";
 $j=0;
+$rows2= "";
 foreach ($rows as $url) {
+
+	$q2 = "SELECT catname FROM categories WHERE catID = (SELECT catID from sites where siteurl = '".$url."')";
+	$result2 = mysqli_query($con,$q2) or die( mysqli_error($con) );
+
+	while($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC))
+	{
+	    $rows2 = $row2["catname"];
+	}
   # code...
 	$html .= "<div class=\"rowcontainer\">";
 $j=$j+1;
-$html .= "<div class=\"cathead\"> <p> $rows2[$index3] </p> </div>";
-$index3++;
+$html .= "<div class=\"cathead\"> <p> $rows2</p> </div>";
 $html .= "<div class=\"row\">";
 $xml = simplexml_load_file($url);
 for($i = 0; $i < 3; $i++){
 	$j=$j+$i;
 	$title = $xml->channel->item[$i]->title;
 	$links[$j] = $xml->channel->item[$i]->link;
-	$js .= " A[$j] = ' $links[$j]';";
-	$js .= " B[$j] = ' $title';";
-//	$js .= "window.alert(A[$j]);";
+	$js .= " A[$j] = \"$links[$j]\";";
+	$js .= " B[$j] = \"$title\";";
 	$description = $xml->channel->item[$i]->description;
 	$des = substr($description, 0, 80)."...";
 	$pubDate = $xml->channel->item[$i]->pubDate;
 				$html .= "<div class=\"col-$i\">";
         $html .= "<div class=\"headline\">$title</div>";
       	$html .= "<div class=\"excerpt\">$des</div>";
+				$html .= "<hr/>";
 				$html .="<div class=\"gridbottom\">";
       	$html .= "<div class=\"timestamp\">$pubDate</div>";
 				$html .= "<div class=\"rmbtn\"><button id=\"rm-$j\" class=\"readmore\" onclick=\"readfunc($j)\" > Read more.. </button></div>";
@@ -88,10 +85,15 @@ $html .= "
   <div id=\"modaly\" class=\"modal-content\">
     <div class=\"modal-header\">
 
-		<button type=\"button\" class=\"close\" onclick=\"closearticle()\" >Close</button>
-		<button type=\"button\" class=\"close\" onclick=\"sharearticle()\" >Share</button>
-		<button type=\"button\" class=\"close\" onclick=\"switcharticle()\" >Switch theme</button>
-
+		<img src=\"images/close.png\" class=\"close\" id=\"cross\" onclick=\"closearticle()\" />
+		<img src=\"images/fb.png\" class=\"close\" id=\"fb\" onclick=\"sharearticle()\"/>
+		<img src=\"images/twitter.png\" class=\"close\" id=\"tw\" onclick=\"sharearticletw()\"/>
+		<select id=\"themes\" class=\"close\" onchange=\"switcharticle()\">
+		<option value=\"white\">White</option>
+		<option value=\"night\">Night</option>
+		<option value=\"sepia\">Sepia</option>
+		<option value=\"dark\">Dark</option>
+		</select>
     </div>
     <div class=\"modal-body\">
 			<p id=\"articlehead\"> Loading headline...</p>

@@ -4,14 +4,17 @@
 <head>
 	<title>Profile</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+
 	<style>
-	input[type=text], input[type=date], input[type=password], input[type=submit], button[type=button] {
+	input[type=text], input[type=number], input[type=date], input[type=password], input[type=submit], button[type=button] {
 	    width: 300px;
 		font-family: Segoe UI;
 		font-size: 18px;
 	    padding: 12px 20px;
 	    margin: 8px 0;
 	    box-sizing: border-box;
+			border: none;
+
 	}
 	input[type=radio]{
 
@@ -19,14 +22,16 @@
 		font-size: 18px;
 	}
 	body{font-size: 22px;}
-select {width: 300px;
-font-family: Segoe UI;
-font-size: 18px;
-padding: 12px 20px;
-margin: 8px 0;
-box-sizing: border-box;}
+    select {width: 300px;
+    font-family: Segoe UI;
+    font-size: 18px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;}
 	</style>
+<script>
 
+</script>
 
 
 </head>
@@ -36,40 +41,39 @@ box-sizing: border-box;}
 
 
 <?php
-session_start();
+     session_start();
 
-//echo "Hello";
-echo "Profile Info: <br>" ;
-echo "Name: ".$_SESSION["name"]."<br>" ;
-echo "Email: ".$_SESSION["email"]."<br>" ;
-echo "Password: ".$_SESSION["password"]."<br>" ;
-echo "Font Size: ".$_SESSION["fontsize"]."<br>" ;
-echo "Font: ".$_SESSION["font"]."<br>" ;
-
- $uid= $_SESSION["UID"];
+     $uname=$_SESSION["name"];
+     $uemail=$_SESSION["email"];
+     $uid= $_SESSION["UID"];
+     $ufonts=$_SESSION["fontsize"];
+     $ufont=$_SESSION["font"];
+     $upass=$_SESSION["password"];
 ?>
 
-
+<div class="acc">
 <form action = "<?php $_PHP_SELF ?>" method = "POST">
-<hr>
 <br>
-	Old password:<br>
+    <label class="cat-title" >Name:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+    <input type="text" name="newName" value="<?php echo $uname; ?>"/><br>
+  <!--  <input type="submit" name="update" value="update Name"/><br>  -->
+
+    <label class="cat-title" >Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+    <input type="text" name="newEmail" value="<?php echo $uemail; ?>"/><br>
+  <!--  <input type="submit" name="updateEmail" value="update Email"/><br> -->
+
+	<label class="cat-title" >Old Password:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 	<input type="text" name="oldpass"/><br>
 
-	New password:<br>
+	<label class="cat-title" >New Password:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 	<input type="text" name="newpass"/><br>
 
-	<input type="submit" name="updatePass" value="update Password"/><br>
+	<!--<input type="submit" name="updatePass" value="update Password"/><br> -->
 
-	Name:<br>
-	<input type="text" name="newName"/><br>
-	<input type="submit" name="updateName" value="update Name"/><br>
 
-	Email:<br>
-	<input type="text" name="newEmail"/><br>
-	<input type="submit" name="updateEmail" value="update Email"/><br>
-
-	<select name="font"><br>
+    <label class="cat-title">Font: <?php echo $ufont; ?></label>
+	<select id="myfont" name="font"><br>
+	<option value=""></option>
   <option value="Segoe UI">Segoe UI</option>
 
   <option value="Times New Roman">Times New Roman</option>
@@ -77,156 +81,35 @@ echo "Font: ".$_SESSION["font"]."<br>" ;
 
   <option value="Trebuchet MS">Trebuchet</option>
   <option value="Sans-Serif">sans-serif</option></select><br>
-  <input type="submit" name="updateFont" value="update Font"/><br>
-<br>
+<!--  <input type="submit" name="updateFont" value="update Font"/><br> -->
 
-Font Size:<br>
-	<input type="text" name="newFS"/><br>
-	<input type="submit" name="updateFS" value="update Font Size"/><br>
-<hr>
-<!--
- 		<input type="checkbox" name="check_list[]" value="1">Entertainment<br>
-  	<input type="checkbox" name="check_list[]" value="2">Sports<br>
-  	<input type="checkbox" name="check_list[]" value="3">Technology<br>
-  	<input type="checkbox" name="check_list[]" value="4">Politics<br>
-  	<input type="checkbox" name="check_list[]" value="5">World<br>
-  	<input type="checkbox" name="check_list[]" value="6">Local<br>
-  	<input type="checkbox" name="check_list[]" value="7">Science<br>
-  	<input type="checkbox" name="check_list[]" value="8">Top<br>
-  	<input type="submit" value="Submit" name="catSel"><br> -->
-
-		<h2>Add categories</h2><br>
+    <label class="cat-title" >Font Size:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+	<input type="number" name="newFS" min="5" max="40" value="<?php echo $ufonts; ?>"/><br>
+	<input style="background-color: #03997e; color:white;" type="submit" name="update" value="UPDATE"/><br>
+</div>
     <?php
 
-    $con=mysqli_connect('localhost','root','');
+        $con=mysqli_connect('localhost','root','');
 
-    if(!$con)
-    {
-        echo "Not connected";
-    }
-    if(!mysqli_select_db($con,'rsscurator'))
-    {
-        echo "database not selected";
-    }
-
-
-
-
-$q2 = "SELECT catname FROM categories WHERE catID IN ( SELECT catID from usercats WHERE uid =".$_SESSION["UID"]." )";
-$result2 = mysqli_query($con,$q2) or die( mysqli_error($con) );
-$rows2 = array();
-$index2 = 0;
-while($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC))
-{
-    $rows2[$index2] = $row2["catname"];
-        $index2++;
-}
-
-
-        echo "<select name='categories'>";
-        if (!in_array("Entertainment", $rows2))
+        if(!$con)
         {
-             echo "<option value='1'>Entertainment</option>" ;
+            echo "Not connected";
         }
-
-        if (!in_array("Sports", $rows2))
+        if(!mysqli_select_db($con,'rsscurator'))
         {
-            echo "<option value='2'>Sports</option>";
+            echo "database not selected";
         }
-        if (!in_array("Technology", $rows2))
-        {
-            echo "<option value='3'>Technology</option>";
-        }
-        if (!in_array("Politics", $rows2))
-        {
-            echo "<option value='4'>Politics</option>";
-        }
-        if (!in_array("World", $rows2))
-        {
-            echo "<option value='5'>World</option>";
-        }
-        if (!in_array("Local", $rows2))
-        {
-            echo "<option value='6'>Local</option>";
-        }
-        if (!in_array("Science", $rows2))
-        {
-            echo "<option value='7'>Science</option>";
-        }
-        if (!in_array("Top", $rows2))
-        {
-            echo "<option value='8'>Top</option>";
-        }
-				echo "</select><br>";
-        echo "<input type='submit' value='Submit' name='catSel'>"; echo "<br>";
-
 
     ?>
-<h2>Remove categories</h2><br>
-<select name="categoriesDel">
-  <option value="1">Entertainment</option>
-  <option value="2">Sports</option>
-  <option value="3">Technology</option>
-  <option value="4">Politics</option>
-  <option value="5">World</option>
-  <option value="6">Local</option>
-  <option value="7">Science</option>
-  <option value="8">Top</option></select><br>
-  <input type="submit" value="Delete" name="catDel">
-<br>
+
 
 </form>
-<h2>Your categories</h2>
 </body>
 </html>
 
 <?php
 
-
-
-
-
-
-
-
-if(!empty($rows2[0]))
-{
-    echo $rows2[0]."\n<br>";
-
-}
-if(!empty($rows2[1]))
-{
-    echo $rows2[1]."\n<br>";
-}
-if(!empty($rows2[2]))
-{
-    echo $rows2[2]."\n<br>";
-}
-if(!empty($rows2[3]))
-{
-    echo $rows2[3]."\n<br>";
-}
-if(!empty($rows2[4]))
-{
-    echo $rows2[4]."\n<br>";
-}
-if(!empty($rows2[5]))
-{
-    echo $rows2[5]."\n<br>";
-}
-if(!empty($rows2[6]))
-{
-    echo $rows2[6]."\n<br>";
-}
-if(!empty($rows2[7]))
-{
-    echo $rows2[7]."\n<br>";
-}
-
-echo "<br><br>";
-
-
-	 if (isset($_POST['updateName']))
+	 if (isset($_POST['update']))
 	 {
     	$newName = $_POST['newName'];
         $_SESSION["name"]=$newName;
@@ -238,14 +121,15 @@ echo "<br><br>";
         }
         else
         {
-            echo "Updated";
+            header("Refresh:0");
         }
 	}
 
-    else if (isset($_POST['catSel']))
+    if (isset($_POST['update']))
      {
-        $cat = $_POST['categories'];
-        $sql= "INSERT INTO usercats (UID,catID) VALUES ('$uid', '$cat')";
+        $newEmail = $_POST['newEmail'];
+        $_SESSION["email"]=$newEmail;
+        $sql= "UPDATE users SET email='$newEmail' WHERE UID='$uid'";
 
         if(!mysqli_query($con, $sql))
         {
@@ -253,63 +137,52 @@ echo "<br><br>";
         }
         else
         {
-            echo "Updated";
+            header("Refresh:0");
         }
     }
 
-     else if (isset($_POST['catDel']))
-     {
-        $cat = $_POST['categoriesDel'];
-        $sql= "DELETE FROM usercats WHERE UID='$uid' AND catID='$cat'";
-
-        if(!mysqli_query($con, $sql))
-        {
-            echo "Not Deleted";
-        }
-        else
-        {
-            echo "Deleted";
-        }
-    }
-
-	else if (isset($_POST['updatePass']))
+	if (isset($_POST['update']))
 	 {
     	$oldpass = $_POST['oldpass'];
 		$newpass = $_POST['newpass'];
 
-        $_SESSION["password"]=$newpass;
-    	$sql= "UPDATE users SET password='$newpass' WHERE UID='$uid'";
+        if($oldpass == $upass)
+        {
+           $sql= "UPDATE users SET password='$newpass' WHERE UID='$uid'";
+           if(!mysqli_query($con, $sql))
+            {
+                echo "Not Updated";
+            }
+            else
+            {
+                 header("Refresh:0");
+            }
+        }
+        if($oldpass === NULL)
+        {
+            header("Refresh:0");
+        }
+        else if($oldpass != $upass && $oldpass != NULL)
+        {
+             echo '<script language="javascript">';
+             echo 'alert("Sorry Your Old Password Does not Match!")';
+             echo '</script>';
+        }
 
-        if(!mysqli_query($con, $sql))
-        {
-            echo "Not Updated";
-        }
-        else
-        {
-            echo "Updated";
-        }
+       // $_SESSION["password"]=$newpass;
+
+
+
 	}
 
-	else if (isset($_POST['updateEmail']))
-	 {
-    	$newEmail = $_POST['newEmail'];
-        $_SESSION["email"]=$newEmail;
-    	$sql= "UPDATE users SET email='$newEmail' WHERE UID='$uid'";
 
-        if(!mysqli_query($con, $sql))
-        {
-            echo "Not Updated";
-        }
-        else
-        {
-            echo "Updated";
-        }
-	}
 
-	else if (isset($_POST['updateFont']))
+	if (isset($_POST['update']))
 	 {
     	$newFont = $_POST['font'];
-        $_SESSION["font"]=$newFont;
+			if($newFont != ""){
+			  $_SESSION["font"]=$newFont;
+
     	$sql= "UPDATE users SET font='$newFont' WHERE UID='$uid'";
 
         if(!mysqli_query($con, $sql))
@@ -320,9 +193,9 @@ echo "<br><br>";
         {
             echo "Updated";
         }
-	}
+	}}
 
-	else if (isset($_POST['updateFS']))
+	if (isset($_POST['update']))
 	 {
     	$newFS = $_POST['newFS'];
         $_SESSION["fontsize"]=$newFS;
